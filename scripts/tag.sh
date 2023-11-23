@@ -17,7 +17,7 @@ fi
 # ====
 main() {
     version=$(cat ./VERSION)
-    git tag -a "$version" -m "Release $version"
+    git tag -a "$version" -m "Release $version" "$@"
 }
 
 main "$@"
