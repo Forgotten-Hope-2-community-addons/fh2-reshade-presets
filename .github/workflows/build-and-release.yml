@@ -29,6 +29,10 @@ jobs:
           apt-get update
           apt-get install zip -y
 
+      - name: Read version
+        id: version
+        run: echo "version=$(cat ./VERSION)" >> "$GITHUB_OUTPUT"
+
       # Builds dist/$NAME_<version>.zip
       - name: Build package
         run: bash scripts/pack.sh
@@ -36,9 +40,11 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.NAME }}_${{ github.ref_name }}.zip
-          path: ./dist/${{ env.NAME }}_${{ github.ref_name }}.zip
+          name: ${{ env.NAME }}_${{ steps.version.outputs.version }}.zip
+          path: ./dist/${{ env.NAME }}_${{ steps.version.outputs.version }}.zip
           if-no-files-found: error
+    outputs:
+      version: ${{ steps.version.outputs.version }}
 
   # This creates a draft release.
   release:
@@ -50,10 +56,10 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: ${{ env.NAME }}_${{ github.ref_name }}.zip
+          name: ${{ env.NAME }}_${{ needs.build.outputs.version }}.zip
       - name: Publish release
         uses: softprops/action-gh-release@v1
         with:
-          name: Release ${{ github.ref_name }}
+          name: Release ${{ needs.build.outputs.version}}
           generate_release_notes: true
-          files: ${{ env.NAME }}_${{ github.ref_name }}.zip
+          files: ${{ env.NAME }}_${{ needs.build.outputs.version }}.zip
