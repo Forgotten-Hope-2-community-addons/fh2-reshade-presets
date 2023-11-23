@@ -2,6 +2,9 @@
 
 ## ReShade presets for Forgotten Hope 2
 
+
+[![Build and release](https://github.com/Forgotten-Hope-2-community-addons/fh2-reshade-presets/actions/workflows/build-and-release.yml/badge.svg)](https://github.com/Forgotten-Hope-2-community-addons/fh2-reshade-presets/actions/workflows/build-and-release.yml)
+
 Tested on latest ReShade (`v5.9.2`) and Forgotten Hope 2 (`v2.63`) versions.
 
 ### ReShade installation
