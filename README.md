@@ -7,6 +7,24 @@
 
 Tested on latest ReShade (`v5.9.2`) and Forgotten Hope 2 (`v2.63`) versions.
 
+![](./images/sgtalex_01_off.png)
+
+![](./images/sgtalex_01_on.png)
+
+<details><summary>See more ...</summary>
+<p>
+
+![](./images/sgtalex_02_off.png)
+
+![](./images/sgtalex_02_on.png)
+
+![](./images/sgtalex_03_off.png)
+
+![](./images/sgtalex_03_on.png)
+
+</p>
+</details> 
+
 ### ReShade installation
 
 Download latest version from their [repository][repo] or [website][website]. Then, 
